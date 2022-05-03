@@ -41,7 +41,7 @@ options = {
   pose_publish_period_sec = 5e-3,
   trajectory_publish_period_sec = 30e-3,
 
-  rangefinder_sampling_ratio = 1.,          -- 传感器数据的采样频率
+  rangefinder_sampling_ratio = 1.,          -- 传感器数据的采样频率，降低计算量
   odometry_sampling_ratio = 1.,
   fixed_frame_pose_sampling_ratio = 1.,
   imu_sampling_ratio = 1.,

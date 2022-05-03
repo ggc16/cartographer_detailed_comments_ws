@@ -1,0 +1,36 @@
+<launch>
+  <!-- bag的地址与名称 -->
+  <arg name="bag_filename" default="$(env HOME)/bagfiles/rslidar-outdoor-gps.bag"/>
+
+  <!-- 使用bag的时间戳 -->
+  <param name="/use_sim_time" value="true" />
+
+  <!-- 启动cartographer -->
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find cartographer_ros)/configuration_files
+          -configuration_basename test.lua"
+      output="screen">
+      <!-- 订阅点云话题 -->
+    <remap from="points2" to="rslidar_points" />
+     <!-- 订阅单线雷达话题 -->
+    <remap from="scan" to="front_scan" />
+    <!-- 订阅里程计话题 -->
+    <remap from="odom" to="odom_scout" />
+    <!-- 订阅imu话题 -->
+    <remap from="imu" to="imu" />
+  </node>
+
+  <!-- 生成ros格式的地图 -->
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+
+  <!-- 启动rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/lx_2d.rviz" />
+
+  <!-- 启动rosbag -->
+  <node name="playbag" pkg="rosbag" type="play"
+      args="--clock $(arg bag_filename)" />
+
+</launch>

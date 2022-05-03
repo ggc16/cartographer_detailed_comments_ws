@@ -78,7 +78,7 @@
     
   },
   "python.autoComplete.extraPaths": [
-    "/opt/ros/kinetic/lib/python2.7/dist-packages"
+    "/opt/ros/melodic/lib/python2.7/dist-packages"
   ],
   "todo-tree.tree.showBadges": false,
   "todo-tree.general.revealBehaviour": "highlight todo",
@@ -175,9 +175,10 @@
     "future": "cpp"
   },
   "python.autoComplete.extraPaths": [
-    "/opt/ros/kinetic/lib/python2.7/dist-packages"
+    "/opt/ros/melodic/lib/python2.7/dist-packages"
   ],
   "python.analysis.extraPaths": [
-    "/opt/ros/kinetic/lib/python2.7/dist-packages"
-  ]
+    "/opt/ros/melodic/lib/python2.7/dist-packages"
+  ],
+  "todo-tree.tree.disableCompactFolders": true
 }

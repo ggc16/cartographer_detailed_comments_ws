@@ -54,7 +54,6 @@ vscode中推荐的插件有:
 ### landmark使用示例
 `roslaunch cartographer_ros landmark_mir_100.launch`
 
-
 ## 4 实时显示三维点云地图与保存地图的功能简述
 显示三维点云地图需要是在建3d轨迹的情况下才可以显示, 点云地图默认发布在 `/point_cloud_map` 话题中.
 
