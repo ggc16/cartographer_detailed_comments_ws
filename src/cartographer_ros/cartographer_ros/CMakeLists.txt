@@ -16,7 +16,7 @@ cmake_minimum_required(VERSION 2.8.12)  # Ships with Ubuntu 14.04 (Trusty)
 
 project(cartographer_ros)
 
-set(PACKAGE_DEPENDENCIES
+set(PACKAGE_DEPENDENCIES    #该包运行所依赖的库
   cartographer_ros_msgs
   geometry_msgs
   message_runtime
