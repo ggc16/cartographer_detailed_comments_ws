@@ -55,10 +55,10 @@ DEFINE_string(
 namespace cartographer_ros {
 namespace {
 
-void Run() {
-  constexpr double kTfBufferCacheTimeInSeconds = 10.;
+void Run() {    
+  constexpr double kTfBufferCacheTimeInSeconds = 10.;  //缓存的时间
   tf2_ros::Buffer tf_buffer{::ros::Duration(kTfBufferCacheTimeInSeconds)};
-  // 开启监听tf的独立线程
+  // 开启监听tf的独立线程，接收坐标变换的消息，等待10s，如果10s后还没收到消息，就丢弃之前的消息。
   tf2_ros::TransformListener tf(tf_buffer);
 
   NodeOptions node_options;
@@ -94,7 +94,7 @@ void Run() {
   if (FLAGS_start_trajectory_with_default_topics) {
     node.StartTrajectoryWithDefaultTopics(trajectory_options);
   }
-
+   // 单线程，执行回调函数是有顺序的，队列
   ::ros::spin();
 
   // 结束所有处于活动状态的轨迹
